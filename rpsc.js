@@ -42,9 +42,6 @@ Choose you element:
     Paper
     Scissors
 `);
-
-    console.log(playerChoice);
-
     if (playerChoice.toUpperCase() === 'ROCK'){
         return 'Rock';
     }else if(playerChoice.toUpperCase() === 'PAPER'){
@@ -89,15 +86,6 @@ function reassignChoice(choice){
             throw Error('Unable to reassign choice')
     }
 }
-
-/*
-console.log(reassignChoice('Rock'));
-console.log(reassignChoice('Paper'));
-console.log(reassignChoice('Scissors'));
-*/
-
-
-
 
 
 
@@ -149,13 +137,31 @@ function playRound(){
 }
 
 
-playRound();
+function playGame() {
+    console.log("Rock Paper Scissors");
+    for (let r = 1; r <= 5; ++r){
+        console.log(`Round ${r}`);
+        playRound();
+        console.log(`Score: ${userScore} - ${comScore}`);
+    }
+    console.log("Game Over");
+    if (userScore > comScore){
+        console.log("Player Wins");
+    }else if (userScore < comScore){
+        console.log("Computer Wins");
+    }else{
+        console.log("Draw");
+    }
+    
+}
 
+playGame();
 
 /*
 TODO
     declare score variables ~~~~~~~
     write the logic to play a single round ~~~~~~~~~~~
-    write the logic to play a game of 5 rounds
+    write the logic to play a game of 5 rounds ~~~~~~~~~
+    Fix the getPlayerChoice display
 */
 
