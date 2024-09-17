@@ -6,7 +6,7 @@ const prompt = require('prompt-sync')({ sigint: true});
  * 
  * @author dante
  * @since 1.0.0v
- * @param none
+ *
  * @returns string: random computer choice
  */
 function getComputerChoice(){
@@ -34,7 +34,7 @@ console.log(getComputerChoice())
  * 
  * @author dante
  * @since 1.0.0v
- * @param none
+ *
  * @returns string: player choice
  */
 function getPlayerChoice() {
@@ -59,3 +59,42 @@ Choose you element:
 
 //This line is to be removed
 getPlayerChoice();
+
+
+/*
+TODO
+    find a way to innitiate a round and declare a winner
+    create score system
+*/
+
+
+
+//the link doesn't work, but i don't give a fuck about that rn
+
+/**
+ * A function that reassigns com and user choice following these rule:
+ * 
+ * pos 0: vsRock, pos 1: vsPaper, pos 2: vsScissors
+ * 
+ * d: draw, w: win, l: lose
+ * 
+ * 
+ * 
+ * @author dante;
+ * @since 1.0.0
+ * @see {@link <a href="README.md">README.md on reassignChoice</a>}
+ * @param {*} choice 
+ * @returns {[]} win conditions
+ */
+function reassignChoice(choice){
+    switch (choice){
+        case 'Rock':
+            return ['d','l','w'];
+        case 'Paper':
+            return ['w','d','l'];
+        case 'Scissors':
+            return ['l','w','d'];
+        default:
+            throw Error('Unable to reassign choice')
+    }
+}
