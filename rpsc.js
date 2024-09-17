@@ -24,8 +24,6 @@ function getComputerChoice(){
     }
 }
 
-//This line is to be removed
-console.log(getComputerChoice())
 
 
 /**
@@ -57,9 +55,6 @@ Choose you element:
 }
 
 
-//This line is to be removed
-getPlayerChoice();
-
 
 /*
 TODO
@@ -84,7 +79,7 @@ TODO
  * @since 1.0.0
  * @see {@link <a href="README.md">README.md on reassignChoice</a>}
  * @param {*} choice 
- * @returns {[]} win conditions
+ * @returns {Array} win conditions
  */
 function reassignChoice(choice){
     switch (choice){
@@ -96,5 +91,53 @@ function reassignChoice(choice){
             return ['l','w','d'];
         default:
             throw Error('Unable to reassign choice')
+    }
+}
+
+/*
+console.log(reassignChoice('Rock'));
+console.log(reassignChoice('Paper'));
+console.log(reassignChoice('Scissors'));
+*/
+
+
+
+
+
+/**
+ * A function that takes both computer and user choices and returns a winner
+ * 
+ * 
+ * @author dante
+ * @since v1.0.0
+ * @see README.md on roundWinner
+ * @param {string} user 
+ * @param {string} com 
+ * @returns {string} round winner
+ */
+function roundWinner(user, com){
+    let winConditions = reassignChoice(user);
+    let pos = -1;
+    if (com === 'Rock'){
+        pos = 0;
+    }else if (com === 'Paper'){
+        pos = 1;
+    }else if (com === 'Scissors'){
+        pos = 2;
+    }else{
+        throw Error('Normally this bug wouldn\'t make it this far');
+    }
+    switch (winConditions[pos]){
+        case 'w':
+            console.log(`User wins, ${user} beats ${com}`);
+            return 'u'; //stands for user
+        case 'l':
+            console.log(`Computer wins: ${com} beats ${user}`);
+            return 'c' //com
+        case 'd':
+            console.log("No winner, this round ends by a draw");
+            return '-'
+        default:
+            throw Error('Okay how the fuck did error end up here!');
     }
 }
