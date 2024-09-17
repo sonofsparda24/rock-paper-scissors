@@ -36,12 +36,7 @@ function getComputerChoice(){
  * @returns string: player choice
  */
 function getPlayerChoice() {
-    let playerChoice = prompt(`
-Choose you element:
-    Rock
-    Paper
-    Scissors
-`);
+    let playerChoice = prompt("Chose: Rock Paper Scissors:   ");
     if (playerChoice.toUpperCase() === 'ROCK'){
         return 'Rock';
     }else if(playerChoice.toUpperCase() === 'PAPER'){
@@ -137,12 +132,19 @@ function playRound(){
 }
 
 
+
+/**
+ * Play a game of 5 rounds
+ * 
+ * @author dante
+ * @since 1.0.0
+ */
 function playGame() {
     console.log("Rock Paper Scissors");
     for (let r = 1; r <= 5; ++r){
         console.log(`Round ${r}`);
         playRound();
-        console.log(`Score: ${userScore} - ${comScore}`);
+        console.log(`Score: ${userScore} ~ ${comScore}`);
     }
     console.log("Game Over");
     if (userScore > comScore){
@@ -155,13 +157,7 @@ function playGame() {
     
 }
 
-playGame();
 
-/*
-TODO
-    declare score variables ~~~~~~~
-    write the logic to play a single round ~~~~~~~~~~~
-    write the logic to play a game of 5 rounds ~~~~~~~~~
-    Fix the getPlayerChoice display
-*/
+//Main
+playGame();
 
