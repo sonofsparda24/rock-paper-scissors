@@ -42,11 +42,14 @@ Choose you element:
     Paper
     Scissors
 `);
-    if (playerChoice.toUpperCase === 'ROCK'){
+
+    console.log(playerChoice);
+
+    if (playerChoice.toUpperCase() === 'ROCK'){
         return 'Rock';
-    }else if(playerChoice.toUpperCase === 'PAPER'){
+    }else if(playerChoice.toUpperCase() === 'PAPER'){
         return 'Paper';
-    }else if(playerChoice.toUpperCase === 'SCISSORS'){
+    }else if(playerChoice.toUpperCase() === 'SCISSORS'){
         return 'Scissors';
     }else{
         console.log('Bad choice');
@@ -54,13 +57,6 @@ Choose you element:
     }
 }
 
-
-
-/*
-TODO
-    find a way to innitiate a round and declare a winner
-    create score system
-*/
 
 
 
@@ -104,18 +100,24 @@ console.log(reassignChoice('Scissors'));
 
 
 
+
+//Game functions and static variables
+let comScore = 0;
+let userScore = 0;
+
 /**
- * A function that takes both computer and user choices and returns a winner
+ * Logic to play a single round of the game
  * 
  * 
  * @author dante
  * @since v1.0.0
  * @see README.md on roundWinner
- * @param {string} user 
- * @param {string} com 
- * @returns {string} round winner
+ * 
  */
-function roundWinner(user, com){
+function playRound(){
+    let com = getComputerChoice();
+    let user = getPlayerChoice();
+
     let winConditions = reassignChoice(user);
     let pos = -1;
     if (com === 'Rock'){
@@ -127,17 +129,33 @@ function roundWinner(user, com){
     }else{
         throw Error('Normally this bug wouldn\'t make it this far');
     }
+
+    console.log(`
+        Your Choice: ${user}
+        Com choice: ${com}
+        `);
     switch (winConditions[pos]){
         case 'w':
             console.log(`User wins, ${user} beats ${com}`);
-            return 'u'; //stands for user
+            userScore++; break;
         case 'l':
             console.log(`Computer wins: ${com} beats ${user}`);
-            return 'c' //com
+            comScore++; break;
         case 'd':
-            console.log("No winner, this round ends by a draw");
-            return '-'
+            console.log("No winner, this round ends by a draw"); break;
         default:
             throw Error('Okay how the fuck did error end up here!');
     }
 }
+
+
+playRound();
+
+
+/*
+TODO
+    declare score variables ~~~~~~~
+    write the logic to play a single round ~~~~~~~~~~~
+    write the logic to play a game of 5 rounds
+*/
+
